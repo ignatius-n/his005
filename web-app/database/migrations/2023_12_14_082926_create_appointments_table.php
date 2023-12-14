@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('genders', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->required()->unique()->comment('e.g Male');
+            $table->unsignedBigInteger('patient_id')->nullable()->index();
+            $table->date('appointment_date')->required();
+            $table->time('appointment_time')->required();
             $table->timestamps();
+
+            $table->foreign('patient_id')->references('id')->on('patients')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('genders');
+        Schema::dropIfExists('appointments');
     }
 };

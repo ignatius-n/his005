@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use DB;
-use App\Models\Gender;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class GenderSeeder extends Seeder
+class CountySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +15,8 @@ class GenderSeeder extends Seeder
     {
 
         DB::table('genders')->insert([
-            ['name' => 'Male',],
-            ['name' => 'Female',],
+            ['name' => 'Nairobi County',],
+            ['name' => 'Machakos County',],
         ]);
-
     }
 }
